@@ -1,0 +1,57 @@
+﻿<Window x:Class="TodoList.EntryTasksWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoList" d:DataContext="{d:DesignInstance Type=local:EntryTasksViewModel}"
+        mc:Ignorable="d"
+        Title="EntryTasksWindow" Height="330" Width="300" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/TodoList;component/BasicControls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border Background="#e1e8f2" CornerRadius="15" BorderThickness="1" BorderBrush="Transparent">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+                <Label Content="Your tasks statistic" FontSize="{StaticResource BigFont}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="DemiBold"/>
+            </DockPanel>
+
+
+            <DockPanel Grid.Row="1" LastChildFill="False">
+                <DockPanel Dock="Top" LastChildFill="False" Margin="5">
+                    <Image Source="{Binding AllIcon}" MaxWidth="25" Margin="5"/>
+                    <Label Content="Total" FontSize="{StaticResource SmallFont}" Margin="5"/>
+                    <Label Content="{Binding TotalTasks, FallbackValue=0}" FontSize="{StaticResource BigFont}" DockPanel.Dock="Right" Margin="5"/>
+                </DockPanel>
+                <DockPanel Dock="Top" LastChildFill="False" Margin="5">
+                    <Image Source="{Binding InProgressIcon}" MaxWidth="25" Margin="5"/>
+                    <Label Content="Todo" FontSize="{StaticResource SmallFont}" Margin="5"/>
+                    <Label Content="{Binding TotalInProgressTasks, FallbackValue=0}" FontSize="{StaticResource BigFont}" DockPanel.Dock="Right" Margin="5"/>
+                </DockPanel>
+                <DockPanel Dock="Top" LastChildFill="False" Margin="5">
+                    <Image Source="{Binding CompletedIcon}" MaxWidth="25" Margin="5"/>
+                    <Label Content="Completed" FontSize="{StaticResource SmallFont}" Margin="5"/>
+                    <Label Content="{Binding TotalCompletedTasks, FallbackValue=0}" FontSize="{StaticResource BigFont}" DockPanel.Dock="Right" Margin="5"/>
+                </DockPanel>
+                <DockPanel Dock="Top" LastChildFill="False" Margin="5">
+                    <Image Source="{Binding OverDueIcon}" MaxWidth="25" Margin="5"/>
+                    <Label Content="Overdue" FontSize="{StaticResource SmallFont}" Margin="5"/>
+                    <Label Content="{Binding TotalOverDueTasks, FallbackValue=0}" FontSize="{StaticResource BigFont}" DockPanel.Dock="Right" Margin="5"/>
+                </DockPanel>
+            </DockPanel>
+
+            <DockPanel Grid.Row="2" LastChildFill="False">
+                <Button Style="{StaticResource BtnMainStyle}" Content="OK!" DockPanel.Dock="Right" Width="80" Command="{Binding CloseWinCmd}"/>
+            </DockPanel>
+        </Grid>
+    </Border>
+</Window>
