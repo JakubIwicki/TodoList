@@ -15,8 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Win32;
 using static TodoList.ImageManager;
+using Windows.UI.Notifications;
+using Microsoft.Win32;
 
 //-----------------------------------------------------------------------
 // 

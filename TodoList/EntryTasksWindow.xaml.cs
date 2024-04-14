@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace TodoList
 {
@@ -29,6 +19,11 @@ namespace TodoList
             ViewModel = new EntryTasksViewModel(tasks, () => this.Close());
 
             DataContext = ViewModel;
+        }
+
+        private void EntryTasksWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.GenerateNotification();
         }
     }
 
@@ -70,6 +65,10 @@ namespace TodoList
         private ICommand? _closeWinCmd;
         public ICommand CloseWinCmd => _closeWinCmd ??= new RelayCommand(_ => _closeWindow());
 
+        public void GenerateNotification()
+        {
+            WindowsNotifications.SendNotification("Tasks", $"You have {TotalInProgressTasks} tasks to do today");
+        }
 
         #region propertyChanged
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -87,3 +86,4 @@ namespace TodoList
         #endregion
     }
 }
+

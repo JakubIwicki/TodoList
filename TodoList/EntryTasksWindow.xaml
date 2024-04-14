@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TodoList" d:DataContext="{d:DesignInstance Type=local:EntryTasksViewModel}"
         mc:Ignorable="d"
-        Title="EntryTasksWindow" Height="330" Width="300" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Title="EntryTasksWindow" Height="330" Width="300" WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="EntryTasksWindow_OnLoaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
